@@ -60,6 +60,21 @@ https://leafletjs.com/examples.html was an incredible resource.-->
 		zoomOffset: -1
 	}).addTo(map);
 
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
+
+
+  L.tileLayer(
+      'https://api.mapbox.com/styles/v1/symes-a/ckzxkx22t007j15lw0vafeack/tiles/256/access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
+          tileSize: 512,
+          zoomOffset: -1,
+          attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+      //mapbox://styles/symes-a/ckzxkx22t007j15lw0vafeack
+      //pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg
+
+
+
   var geojsonMarkerOptions = {
       radius: 8,
       fillColor: "#008080",
