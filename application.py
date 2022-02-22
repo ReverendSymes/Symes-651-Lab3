@@ -95,7 +95,10 @@ def index():
 #https://notebook.community/captainsafia/nteract/applications/desktop/example-notebooks/pandas-to-geojson
 
 
-
+@app.route("/newenv", methods = ["GET", "POST"])
+def newenv():
+    if request.method == "GET":
+         
 
 
 
