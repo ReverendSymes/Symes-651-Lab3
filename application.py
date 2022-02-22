@@ -101,10 +101,10 @@ def newenv():
         selection = "Yes"
         return render_template("test.html",selection=selection)
 
-    if request.method == "PULL":
+    if request.method == "POST":
         selection = request.form.get("selection")
         return render_template("test.html",selection=selection)
-        
+
 
 
 

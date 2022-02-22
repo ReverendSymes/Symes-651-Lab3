@@ -13,6 +13,9 @@
      height:70%;
    }
 </style>
+<script type="text/javascript">
+  var selection = {{selection}};
+</script>
 </head>
 <body>
 <div id='map'></div>
@@ -20,20 +23,22 @@
 <script>
 L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
 var map = L.map('map').setView([51.0447, -114.0719], 13);
-
+//var selection = {{selection}};
 // Add tiles from the Mapbox Static Tiles API
 // (https://docs.mapbox.com/api/maps/#static-tiles)
 // Tiles are 512x512 pixels and are offset by 1 zoom level
 //mapbox://styles/symes-a/ckzxkx22t007j15lw0vafeack
 //mapbox://styles/symes-a/ckzykrzg8005r14miz7s7rtur
-if(selection == "Yes"){
+
+//if (selection == "Yes") {
   L.tileLayer(
       'https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
           tileSize: 512,
           zoomOffset: -1,
           attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
-}
+      document.write("Yes");
+//}
 
 // L.tileLayer(
 //     'https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
@@ -42,18 +47,19 @@ if(selection == "Yes"){
 //         attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 //     }).addTo(map);
 
-if(selection == "No"){
-  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-    maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1
-  }).addTo(map);
-}
+// if (selection == "No") {
+//   var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+//     maxZoom: 18,
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+//       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     id: 'mapbox/streets-v11',
+//     tileSize: 512,
+//     zoomOffset: -1
+//   }).addTo(map);
+//   document.write("No");
+// }
 </script>
-<form action = "{{url_for('index')}}" method = "post">
+<form action = "{{url_for('newenv')}}" method = "post">
   <h4>Would you like map </h4>
   <select id="selection" name="selection">
     <option value="Yes">Yes</option>
