@@ -104,6 +104,7 @@ def newenv():
     if request.method == "PULL":
         selection = request.form.get("selection")
         return render_template("test.html",selection=selection)
+        
 
 
 
