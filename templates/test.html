@@ -8,7 +8,10 @@
 <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; height:70%; }
+  #map {
+    width:100%;
+     height:70%;
+   }
 </style>
 </head>
 <body>
@@ -30,5 +33,14 @@ L.tileLayer(
         attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 </script>
+<form action = "{{url_for('index')}}" method = "post">
+  <h4>Would you like map </h4>
+  <select id="selection" name="selection">
+    <option value="Yes">Yes</option>
+    <option value="No">No</option>
+  </select>
+  <input type="submit">
+</form>
+
 </body>
 </html>

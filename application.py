@@ -98,7 +98,14 @@ def index():
 @app.route("/newenv", methods = ["GET", "POST"])
 def newenv():
     if request.method == "GET":
-         
+        selection = "Yes"
+        return render_template("test.html",selection=selection)
+
+    if request.method == "PULL":
+        selection = request.form.get("selection")
+        return render_template("test.html",selection=selection)
+
+
 
 
 
