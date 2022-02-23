@@ -35,9 +35,7 @@ https://leafletjs.com/examples.html was an incredible resource.-->
 	</style>
   </head>
   <body>
-    <script>
-    var QueryData = {{Gengeojson| tojson}};
-    </script>
+
 <script src='jquery-3.2.1.min.js'></script>
 <h1>Calgary Permit Maps</h1>
 <h2>For Permit Enthusiasts Only</h2>
@@ -51,63 +49,61 @@ https://leafletjs.com/examples.html was an incredible resource.-->
 
 	var map = L.map('map').setView([51.0447, -114.0719], 11);
 
-	var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(map);
+	// var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	// 	maxZoom: 18,
+	// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+	// 		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	// 	id: 'mapbox/streets-v11',
+	// 	tileSize: 512,
+	// 	zoomOffset: -1
+	// }).addTo(map);
 
-  L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
-
-
-  L.tileLayer(
-      'https://api.mapbox.com/styles/v1/symes-a/ckzxkx22t007j15lw0vafeack/tiles/256/access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
+  //L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
+var selection = {{ selection|tojson }};
+if( selection == "True"){
+  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
           tileSize: 512,
           zoomOffset: -1,
-          attribution: '© <a href="https://apps.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+    }
+      //document.write(selection);
+
+
+
+
+
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
+  L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
+var selection = {{ selection|tojson }};
+var hehe = "False";
+//if( hehe == "False"){
+  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93.html?title=copy&access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg&zoomwheel=true&fresh=true#9/37.78/-122.4241', {
+          tileSize: 512,
+          zoomOffset: -1,
+          attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
 
+//}
+//https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93.html?title=copy&access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg&zoomwheel=true&fresh=true#9/37.78/-122.4241
       //mapbox://styles/symes-a/ckzxkx22t007j15lw0vafeack
       //pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg
-
-
-
-  var geojsonMarkerOptions = {
-      radius: 8,
-      fillColor: "#008080",
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
-  };
-
-  function onEachFeature(feature, layer) {
-      // does this feature have a property named popupContent?
-      if (feature.properties && feature.properties.issueddate) {
-          layer.bindPopup("Issue Date: " + feature.properties.issueddate + "<br>" + "Contractor Name: " + feature.properties.contractorname+ "<br>" + "Work Class Group: " +feature.properties.workclassgroup + "<br>" + "Community: " + feature.properties.communityname + "<br>" + "OG Address: " + feature.properties.originaladdress);
-      }
-  }
-//Code for silly easy geoJSON Labels
-  L.geoJSON(QueryData, {
-
-      pointToLayer: function (feature, latlng) {
-          return L.circleMarker(latlng, geojsonMarkerOptions);
-      },
-      onEachFeature: onEachFeature
-  }).addTo(map);
+      //mapbox://styles/symes-a/ckzyyc21c005714qv5sndpo93
 
 
 
 </script>
-<form action = "{{url_for('index')}}" method = "post">
-  Min Year: <input type="date" name="lb"><br>
-  Max Year: <input type="date" name="ub"><br><br>
-  <button>ClickWhenDone</button>
-</form>
 
+
+<form action = "{{url_for('index')}}" method = "post">
+  <h4>Would you like map </h4>
+  <select id="selection" name="selection">
+    <option value="True">Yes</option>
+    <option value="False">No</option>
+  </select>
+  <input type="submit">
+</form>
+{{selection}}
 </script>
 
 </script>

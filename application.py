@@ -35,61 +35,13 @@ def index():
     # First 2000 results, returned as JSON from API / converted to Python list of
     # dictionaries by sodapy.
     if request.method == "GET":
-        query = ("https://data.calgary.ca/resource/c2es-76ed.json?")
-            #"&issueddate=2019-09-09")
-        results = pd.read_json(query)
+        selection = "False"
 
     if request.method == "POST":
-         ub = request.form.get("ub")
-         lb = request.form.get("lb")
-         query = ("https://data.calgary.ca/resource/c2es-76ed.json?"
-            f"$where=issueddate+>+'{lb}'+and+issueddate+<+'{ub}'")
-             #f"&issueddate={lb}")
-         results = pd.read_json(query)
-
-    # Convert to pandas DataFrame
-    df = pd.DataFrame.from_records(results)
-    df['latitude'] = df['latitude'].astype(float)
-    df['longitude'] = df['longitude'].astype(float)
-
-#Bump same place values a little bit to make it nicer.
-#This is my simple approach to requirement 4
-    for i in range(0,len(df['latitude'])):
-        for j in range(0,len(df['longitude'])):
-            if df['latitude'][i] == df['latitude'][j]:
-                if df['longitude'][i] == df['longitude'][j]:
-                    df['longitude'][j] = df['longitude'][j] + 0.01
+        selection = request.form.get("selection")
 
 
-
-    cols = ['issueddate', 'workclassgroup', 'latitude', 'longitude', 'contractorname', 'communityname',"originaladdress"]
-    df_subset = df[cols]
-    df_geo = df_subset.dropna(subset=['latitude', 'longitude'], axis=0, inplace=False)
-
-    def df_to_geojson(df, properties, lat='latitude', lon='longitude'):
-        # create a new python dict to contain our geojson data, using geojson format
-        geojson = {'type':'FeatureCollection', 'features':[]}
-
-        # loop through each row in the dataframe and convert each row to geojson format
-        for _, row in df.iterrows():
-            # create a feature template to fill in
-            feature = {'type':'Feature',
-                       'properties':{},
-                       'geometry':{'type':'Point',
-                                   'coordinates':[]}}
-            feature['geometry']['coordinates'] = [row[lon],row[lat]]
-
-            for prop in properties:
-                feature['properties'][prop] = row[prop]
-            geojson['features'].append(feature)
-
-        return geojson
-
-    cols = ['issueddate', 'workclassgroup', 'contractorname', 'communityname',"originaladdress"]
-
-    Gengeojson = df_to_geojson(df_geo, cols)
-
-    return render_template("Mappingpage.html",Gengeojson=Gengeojson)
+    return render_template("Mappingpage.html", selection= selection)
 
 #the above code transforming the query to geoJSON was adapted from the code providded at
 #https://notebook.community/captainsafia/nteract/applications/desktop/example-notebooks/pandas-to-geojson

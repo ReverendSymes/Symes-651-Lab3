@@ -13,8 +13,9 @@
      height:70%;
    }
 </style>
-<script type="text/javascript">
-  var selection = {{selection}};
+<script>
+  var selection = {{ selection|tojson }};
+  //alert(selection);
 </script>
 </head>
 <body>
@@ -30,15 +31,15 @@ var map = L.map('map').setView([51.0447, -114.0719], 13);
 //mapbox://styles/symes-a/ckzxkx22t007j15lw0vafeack
 //mapbox://styles/symes-a/ckzykrzg8005r14miz7s7rtur
 
-//if (selection == "Yes") {
+if (selection == "Yes") {
   L.tileLayer(
       'https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
           tileSize: 512,
           zoomOffset: -1,
           attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
-      document.write("Yes");
-//}
+      document.write(selection);
+}
 
 // L.tileLayer(
 //     'https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=' + L.mapbox.accessToken, {
@@ -47,19 +48,20 @@ var map = L.map('map').setView([51.0447, -114.0719], 13);
 //         attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 //     }).addTo(map);
 
-// if (selection == "No") {
-//   var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-//     maxZoom: 18,
-//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-//       'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-//     id: 'mapbox/streets-v11',
-//     tileSize: 512,
-//     zoomOffset: -1
-//   }).addTo(map);
-//   document.write("No");
-// }
+if (selection == "No") {
+  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+  }).addTo(map);
+  document.write("No");
+}
 </script>
-<form action = "{{url_for('newenv')}}" method = "post">
+{{selection}}
+<form action = "{{url_for('newenv', selection=selection)}}" method = "post">
   <h4>Would you like map </h4>
   <select id="selection" name="selection">
     <option value="Yes">Yes</option>
