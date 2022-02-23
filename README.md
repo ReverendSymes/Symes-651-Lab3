@@ -13,3 +13,6 @@ templates/Mappingpage.html - Mapping page where the map displaying data requeste
 
 Link to my Map styling:
     https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur.html?title=view&access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg&zoomwheel=true&fresh=true#12.75/51.0401/-114.05434/0/4
+
+
+This Repo is built upon the previous work in the Lab 2 Repo
