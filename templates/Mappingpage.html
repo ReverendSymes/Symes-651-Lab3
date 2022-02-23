@@ -60,6 +60,15 @@ https://leafletjs.com/examples.html was an incredible resource.-->
 	// }).addTo(map);
 
   //L.mapbox.accessToken = 'pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg';
+
+  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
+          tileSize: 512,
+          zoomOffset: -1,
+          attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+
+
 var selection = {{ selection|tojson }};
 if( selection == "True"){
   var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzykrzg8005r14miz7s7rtur/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
@@ -79,11 +88,11 @@ if( selection == "True"){
 var selection = {{ selection|tojson }};
 var hehe = "False";
 //if( hehe == "False"){
-  var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
-          tileSize: 512,
-          zoomOffset: -1,
-          attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
+var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg', {
+        tileSize: 512,
+        zoomOffset: -1,
+        attribution: '© <a href="https://www.mapbox.com/contribute/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
 
 //}
 //https://api.mapbox.com/styles/v1/symes-a/ckzyyc21c005714qv5sndpo93.html?title=copy&access_token=pk.eyJ1Ijoic3ltZXMtYSIsImEiOiJja3pzcTg0NHAzdDhsMm5xcm5weDNnZTR0In0.Y241akcUKZICjTQlUusiMg&zoomwheel=true&fresh=true#9/37.78/-122.4241
